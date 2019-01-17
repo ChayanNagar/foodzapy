@@ -34,10 +34,19 @@ function check(i)
 </head>
 <body>
  <%@page import="java.util.ArrayList,beans.JoinCart_Bean" %>
+<%
+ 	  String uid=(String)session.getAttribute("uid");
+ 	 if(uid==null) 
+ 	  {%>
  <%@include file="Headercust1.jsp" %>
- <%
- 	  String uid=(String)session.getAttribute("uid");%>
+ <%} %>
+ <% if(uid!=null) 
+ 	  {%>
+ <%@include file="HeaderCust.jsp" %>
+ <%} %>
+ <div style="padding-top: 70px;"></div>
  ${msg}
+ 
  <div class="container">
    
  <table class="table table-hover" style="

@@ -18,14 +18,22 @@ response.addHeader("expire","0");
   background:url(images/bg8.jpg);
   background-position: center;
   background-size:cover;
+  color:#026836;
   }
   .container
   {
   margin-top:79px;
   }
-  h1{
-  font-family:comic sans ms;
-  color:red;
+  h3{
+  font-family:comic sans ms,sans-serif;
+  background:#f4cb42;
+  padding:8px 20px 10px;
+  font-weight:bold;
+  font-size:24px;
+  
+  }
+  .orange_divider{
+  border:2px solid #f05523;
   }
   table
   {
@@ -89,7 +97,7 @@ response.addHeader("expire","0");
 <body> 
  
 
-<nav class="navbar navbar-light "  role="navigation">
+<nav class="navbar navbar-light navbar-fixed-top " style="background:#e6ffff;" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <div id="logo" class="fl_left">
@@ -129,10 +137,33 @@ response.addHeader("expire","0");
 <%
 }
     %>
+    <div class="inner-container "style="margin:55px;"  >
+        <!-- Begin Content -->
+         <div class="item-page" itemscope itemtype="http://schema.org/Article">
+	<meta itemprop="inLanguage" content="en-GB" />
+    
+    <div itemprop="articleBody" style="height:265px;">
+		<hr class="orange_divider" />
+<div class="row content_section">
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+<h2 color="#026836">What is Zappy?</h2>
+<p class="para_bold">Zappy is your kitchen convenience partner.</p>
+<p>Zappy is an endeavor to bring you the convenience of preparing healthy food that tastes as good as home made. Its also the reason why you feel happy whenever you open a Zappy pack!</p>
+</div>
+<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 text-right"><img class="img-responsive" src="images/ping.png" alt="" /></div>
+</div>
+<hr class="orange_divider" />	</div>
+
+	
+						</div>
+
+        <!-- End Content --> 
+  
+ 	 </div>
 
  <div class="banner_area home1_banner mt-30">
                     <div class="container-fluid">
-                        <div class="row" style="margin-top:20px;">
+                        <div class="row" style="margin-top:0px;">
                             <div class="col-lg-4 col-md-6">
                                 <div class="single_banner">
                                     <a href="#">
@@ -166,7 +197,7 @@ response.addHeader("expire","0");
  %>
 
 <div class="container-fluid">
-  <h1 >Ready to Drink</h1>
+  <h3 >Ready to Drink</h3>
         
   
      
@@ -222,7 +253,7 @@ response.addHeader("expire","0");
 
 
 <div class="container-fluid">
-  <h1>Ready to eat</h1>
+  <h3>Ready to eat</h3>
         
   
      
@@ -271,7 +302,7 @@ response.addHeader("expire","0");
  
  %>
 <div class="container-fluid">
-  <h1>Ready to cook</h1>
+  <h3>Ready to cook</h3>
         
   
      

@@ -25,6 +25,15 @@ response.addHeader("expire","0");
    background-position: center;
   background-size:cover;
   }
+ h3{
+   
+  font-family:comic sans ms,sans-serif;
+  background:#f4cb42;
+  padding:8px 20px 10px;
+  font-weight:bold;
+  font-size:24px;
+  }
+ 
  table
   {
   text-align:center;
@@ -83,10 +92,10 @@ response.addHeader("expire","0");
 	       
 
 
-	  <center>
+	  <center style="padding-top: 70px;">
 	  <font color="#0b9aed">
 	   
-	<h1>Welcome,<%=uid%></h1>
+	<h1 >Welcome,<%=uid%></h1>
 	</font>
 	<hr/>
 	</center>
@@ -109,7 +118,7 @@ response.addHeader("expire","0");
  %>
 
 <div class="container-fluid">
-  <h1 >Ready to Drink</h1>
+  <h3 >Ready to Drink</h3>
         
   
      
@@ -161,7 +170,7 @@ response.addHeader("expire","0");
 
 
 <div class="container-fluid">
-  <h1>Ready to eat</h1>
+  <h3>Ready to eat</h3>
         
   
      
@@ -208,7 +217,7 @@ response.addHeader("expire","0");
  
  %>
 <div class="container-fluid">
-  <h1>Ready to cook</h1>
+  <h3>Ready to cook</h3>
         
   
      

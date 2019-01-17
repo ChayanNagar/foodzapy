@@ -32,7 +32,7 @@ response.addHeader("expire","0");
       <li class="active"><a href="./viewgridcustomer">Home</a></li>
       <li><a href="ViewCart"><span class="glyphicon glyphicon-shopping-cart	"><span class="cart_count">${count}</span></span><h5>Cart</h5></a></li>
       
-          <li><a href="Order.jsp">Order History</a></li>
+          
           
       </ul>
       

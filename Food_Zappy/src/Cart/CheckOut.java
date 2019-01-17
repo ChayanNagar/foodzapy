@@ -52,8 +52,8 @@ public class CheckOut extends HttpServlet {
         	response.sendRedirect("CustomerLogin.jsp");
         }
         else {
-        int z=m.gTotal(user);
-        ArrayList<CartBean> list= m.checkOut(user,address,z);
+       // int z=m.gTotal(user);
+        ArrayList<CartBean> list= m.checkOut(user,address);
           	                       //CartBean c=new CartBean();
                  
                                 //    int y=m.insertOrder1(ee, address,z);

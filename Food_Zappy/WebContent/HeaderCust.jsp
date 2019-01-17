@@ -21,7 +21,7 @@ response.addHeader("expire","0");
 
 
 
-<nav class="navbar navbar-light" style="background-color: #f9fd08;">
+<nav class="navbar navbar-light navbar-fixed-top" style="background-color: #f9fd08;">
   <div class="container-fluid">
     <div class="navbar-header">
       <div id="logo" class="fl_left">
@@ -32,9 +32,8 @@ response.addHeader("expire","0");
       <li class="active"><a href="./viewgridcustomer">Home</a></li>
       <li><a href="ViewCart"><span class="glyphicon glyphicon-shopping-cart	"><span class="cart_count">${count}</span></span><h5>Cart</h5></a></li>
       
-          <li><a href="Order.jsp">Order History</a></li>
-          
-      </ul>
+          <li><a href="myOrder"> My Order </a></li>
+                </ul>
       
      <ul class="nav navbar-nav navbar-right">
       <li><a href="Logout.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

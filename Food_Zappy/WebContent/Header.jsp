@@ -35,6 +35,8 @@ response.addHeader("expire","0");
 <li class="active"><a href="AdminHome.jsp"> Admin Home Page</a></li>
             <li><a href="AddProduct.jsp">Add product details here</a></li>
       <li><a href="ViewProduct">View All product details</a></li>
+      <li><a href="ViewPendingOrder">View All pending orders</a></li>
+      <li><a href="OrderHistory">View Order History</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="Logout.jsp"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import beans.CartBean;
 import beans.CustomerBean;
 import beans.JoinCart_Bean;
+import beans.OrderBean;
 import beans.ProductBean;
 
 public class MyDao {
@@ -638,20 +639,20 @@ public class MyDao {
 			}
 	return gtot;
 	 }
-   public ArrayList<CartBean>  checkOut(String user,String Add,int total)
+   public ArrayList<CartBean>  checkOut(String user,String Add)
 	{
 		ArrayList<CartBean> list=new ArrayList<>();
 		CartBean e=new CartBean();
 		try {
 			Connection con=start();
-			PreparedStatement ps=con.prepareStatement("select pid,quantity,emailid from cart WHERE emailid=?");
+			PreparedStatement ps=con.prepareStatement("select c.pid,c.quantity,c.emailid,p.price from cart c,product p WHERE c.pid=p.pid AND c.emailid=?");
 			ps.setString(1, user);
 			ResultSet rs=ps.executeQuery();
 			
 		//	System.out.println(ps);
 			while(rs.next())
 			{ 
-				insertOrder1(rs.getInt("pid"),rs.getInt("quantity"),rs.getString("emailid"),Add,total);
+				insertOrder1(rs.getInt(1),rs.getInt(2),rs.getString(3),Add,rs.getInt(4));
 								
 			}
 			deleteCartTable(user);
@@ -663,18 +664,18 @@ public class MyDao {
 			}
 	return list;
 	 }
-   public int insertOrder1(int pid,int quan,String user,String add,int total)
+   public int insertOrder1(int pid,int quan,String user,String add,int price)
 	{ 
 		int x=0;
 		
 		try {
 			
 			Connection con=start();
-			PreparedStatement ps1=con.prepareStatement("insert into order1(pid,quantity,total,emailid,address,status)values(?,?,?,?,?,?)");
+			PreparedStatement ps1=con.prepareStatement("insert into order1(pid,quantity,price,emailid,address,status)values(?,?,?,?,?,?)");
 		    
 			ps1.setInt(1,pid);
 			ps1.setInt(2,quan);
-		   ps1.setInt(3, total);
+		   ps1.setInt(3, price);
 			ps1.setString(4,user);
 		    ps1.setString(5, add);
 		   ps1.setInt(6, 0);
@@ -709,5 +710,130 @@ public class MyDao {
   		
   		return x;
   	}
+   public ArrayList<OrderBean>   viewPendingOrder()
+	{
+		ArrayList<OrderBean> list=new ArrayList<>();
+		try {
+			Connection con=start();
+			PreparedStatement ps=con.prepareStatement("select * from order1  where status=0 order by oid desc");
+			//System.out.println(ps);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{ 
+				OrderBean e=new OrderBean();
+				e.setOid(rs.getInt("oid"));
+				e.setPid(rs.getInt("pid"));
+				e.setQuantity(rs.getInt("quantity"));
+				e.setPrice(rs.getInt("price"));
+				e.setUser(rs.getString("emailid"));
+				e.setAddress(rs.getString("address"));
+				e.setStatus(rs.getInt("status"));
+                e.setDate(rs.getString("datetime"));
+				list.add(e);
+		     }
+			con.close();
+		}catch( SQLException w)
+			{
+			  System.out.println(w);
+			}
+	return list;
+		
+	}
+   public ArrayList<OrderBean>   viewOrderHistory()
+  	{
+  		ArrayList<OrderBean> list=new ArrayList<>();
+  		try {
+  			Connection con=start();
+  			PreparedStatement ps=con.prepareStatement("select * from order1  where status!=0 order by oid desc");
+  			ResultSet rs=ps.executeQuery();
+  			while(rs.next())
+  			{ 
+  				OrderBean e=new OrderBean();
+  				e.setOid(rs.getInt("oid"));
+  				e.setPid(rs.getInt("pid"));
+  				e.setQuantity(rs.getInt("quantity"));
+  				e.setPrice(rs.getInt("price"));
+  				e.setUser(rs.getString("emailid"));
+  				e.setAddress(rs.getString("address"));
+  				e.setStatus(rs.getInt("status"));
+  				e.setDate(rs.getString("datetime"));
+  				list.add(e);
+  		     }
+  			con.close();
+  		}catch( SQLException w)
+  			{
+  			  System.out.println(w);
+  			}
+  	return list;
+  		
+  	}
 
+   public int productDispatch(int oid)
+	{
+		int x=0;
+		
+		try {
+			
+			Connection con=start();			
+			PreparedStatement ps=con.prepareStatement("update order1 set status=1 where oid=?");
+			//ps.setInt(1,1);
+			ps.setInt(1,oid);
+			x= ps.executeUpdate();
+	       con.close();
+		}catch(SQLException w)
+			{
+			  System.out.println(w);
+			}
+		
+		return x;
+	}
+   public int productNotAvailable(int oid)
+	{
+		int x=0;
+		
+		try {
+			
+			Connection con=start();			
+			PreparedStatement ps=con.prepareStatement("update order1 set status=2 where oid=?");
+			//ps.setInt(1,2);
+			ps.setInt(1,oid);
+			x= ps.executeUpdate();
+	       con.close();
+		}catch(SQLException w)
+			{
+			  System.out.println(w);
+			}
+		
+		return x;
+	}
+   public ArrayList<OrderBean>   viewCustomerOrder(String user)
+	{
+		ArrayList<OrderBean> list=new ArrayList<>();
+		try {
+			Connection con=start();
+			PreparedStatement ps=con.prepareStatement("select * from order1 where emailid=? order by oid desc ");
+			ps.setString(1, user);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{ 
+				OrderBean e=new OrderBean();
+				e.setOid(rs.getInt("oid"));
+				e.setPid(rs.getInt("pid"));
+				e.setQuantity(rs.getInt("quantity"));
+				e.setPrice(rs.getInt("price"));
+				e.setUser(rs.getString("emailid"));
+				e.setAddress(rs.getString("address"));
+				e.setStatus(rs.getInt("status"));
+               e.setDate(rs.getString("datetime"));
+				list.add(e);
+		     }
+			con.close();
+		}catch( SQLException w)
+			{
+			  System.out.println(w);
+			}
+	return list;
+		
+	}
+  
 }
