@@ -57,7 +57,8 @@ public class CustomerCheck extends HttpServlet {
 			}
 			else {
 				RequestDispatcher rd=request.getRequestDispatcher("CustomerLogin.jsp");
-				request.setAttribute("msg","Login fail try again...");
+				request.setAttribute("msg","<h3>Login Fail Try Again..</h3>");
+						
 				rd.forward(request,response);
 				  //response.sendRedirect("index.jsp");
 			}

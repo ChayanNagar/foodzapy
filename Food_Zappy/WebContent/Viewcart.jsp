@@ -107,8 +107,11 @@ function check(i)
 	<div class="col-sm-6">
 <form action="CheckOut" method="post">
 <div class="form-group">
-    <label for="address">Delivery Address:</label>
-   <textarea name="daddress" class="form-control" ></textarea>
+   <%if(uid!=null) {%>
+   <label>Delivery Address:</label>
+   <textarea name="daddress" class="form-control" required ></textarea>
+   <%} %>
+   
   </div>
   <button type="submit" class="btn btn-primary">Check Out</button>
 </form>

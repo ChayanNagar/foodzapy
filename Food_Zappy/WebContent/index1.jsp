@@ -106,11 +106,11 @@ response.addHeader("expire","0");
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="index.jsp">Home</a></li>
-      <li><a href="about.jsp">What's Zappy</a></li>
+      <li><a href="#">What's Zappy</a></li>
       
-          <li><a href="spreading.jsp">Spreading zappiness</a></li>
-          <li><a href="join us.jsp">Join us</a></li>
-          <li><a href="contact us.jsp">Contact Us</a></li>
+          <li><a href="#">Spreading zappiness</a></li>
+          <li><a href="#">Join us</a></li>
+          <li><a href="#">Contact Us</a></li>
           <li><a href="Signup.jsp">Sign Up </a></li>
           <li><a href="Login.jsp">Login</a></li>
      <!-- <li><a href="AddProduct.jsp">Add product details here</a></li>

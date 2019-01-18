@@ -11,7 +11,8 @@
 <style >
 body
 {
-background:url(images/demo/backgrounds/back.png);
+  
+
  height: 1000px; /* You must set a specified height */
    background-position: center; /* Center the image */
      background-size:  cover;
@@ -22,13 +23,13 @@ background:url(images/demo/backgrounds/back.png);
 }
 h1
 {
-color:yellow;
+color:green;
 }
 label
 {
 font-size:20px;
 font-family: comic sans ms;
-color:#69eaf1;
+color:#424bf4;
 }
 button {
   background-color: #4CAF50;
@@ -62,8 +63,8 @@ $(document).ready(function(){
 			success:function(response){
 				//alert(response);
 				$("#msg").html(response);
-				alert(response);
-		 		alert(response.includes("Already Exist"));
+				//alert(response);
+		 		//alert(response.includes("Already Exist"));
 				if(response.includes("Already Exist"))
 				 {
 					 $("#emailid").val("");
@@ -74,7 +75,7 @@ $(document).ready(function(){
 	});
 });
 </script>
-
+<script src="Validation.js"></script>
 
 </head>
 <body>
@@ -93,36 +94,50 @@ $(document).ready(function(){
 
 <div class="container">
 	<div class="col-sm-3">
-    <form action="./InsertCustomer" method="post" >
+    <form name="myform" action="./InsertCustomer" method="post" >
  
     <div class="form-group">
     <label for="cname">Name:</label>
-     <input type="text" class="form-control" name="cname" id="Cname">
+     <input type="text" onBlur="return valid();"class="form-control" name="cname" id="Cname">
+   <span id="message"class="text-danger font-weight-bold">
+   </span>
+     
      </div>
  
   <div class="form-group">
     <label for="email">EmailId:</label>
     <input type="email" class="form-control" name="email" id="emailid">
-    <span ID='msg'></span>
+    <span ID='msg' class="text-danger font-weight-bold">
+   </span>
+    
   </div>
  
   <div class="form-group">
     <label for="password">Password:</label>
    <input type="password" class="form-control" name="password" id="pwd">
+   <span id="message2"class="text-danger font-weight-bold">
+   </span>
+   
     </div>
   
   <div class="form-group">
     <label for="mobile">MobileNo:</label>
    <input type="text" class="form-control" id="mobileno" name="mnumber" />
+   <span id="message3"class="text-danger font-weight-bold">
+   </span>
+   
   </div>
   
   <div class="form-group">
     <label for="address">Address:</label>
-   <textarea name="address" class="form-control" ></textarea>
+   <textarea name="address" id="address" class="form-control" required></textarea>
+   <span id="message4" class="text-danger font-weight-bold">
+   </span>
+   
   </div>
   
   
-     <button type="submit" class="btn btn-primary">Submit</button>
+     <button type="submit" class="btn btn-primary" onClick="return valid();">Submit</button>
 </form>
 </div>
 </div>

@@ -69,7 +69,7 @@ public class CheckOut extends HttpServlet {
                //   }
           
                   RequestDispatcher rd=request.getRequestDispatcher("ViewCheckOut.jsp");
-           	     //request.setAttribute("LIST", list);
+           	     request.setAttribute("msg", "<h3>Order placed successfully...Product will be send as soon as possible</h3>");
            	 rd.forward(request, response);
         }
 

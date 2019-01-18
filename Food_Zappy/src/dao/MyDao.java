@@ -835,5 +835,29 @@ public class MyDao {
 	return list;
 		
 	}
-  
+   public String sendPassword(String userpss)
+  	{
+  		
+  		
+  		try {
+  			
+  			Connection con=start();			
+  			PreparedStatement ps=con.prepareStatement("select password from customer where emailid=?");
+  			//ps.setInt(1,2);
+  			ps.setString(1,userpss);
+  			//System.out.println(ps);
+  			ResultSet rs=ps.executeQuery();
+  			if(rs.next())
+  			{
+  				userpss=rs.getString(1);
+  			}
+  	       con.close();
+  		}catch(SQLException w)
+  			{
+  			  System.out.println(w);
+  			}
+  		
+  		return userpss;
+  	}
+
 }

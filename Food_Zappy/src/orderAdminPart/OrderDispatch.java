@@ -72,7 +72,7 @@ public class OrderDispatch extends HttpServlet {
 	    		   request.setAttribute("LIST", list);
 	    			    //request.setAttribute("msg","Product: "+pid+ " deleted Successfully..");
 	    		   rd.forward(request, response);
-	    		   String to="emailid";
+	    		   String to=emailid;
 	    			 String sub="Thanks for Zappy Food Online Shopping";
 	    			 String msg="Your ORDER IS OUT OF STOCK for oid :"+oid;
 	    			 sendMail(to,sub,msg);

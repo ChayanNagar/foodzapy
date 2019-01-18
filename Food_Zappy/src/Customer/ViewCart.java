@@ -46,20 +46,52 @@ public class ViewCart extends HttpServlet {
 		if(user==null)
 		{
 			user=request.getRemoteAddr();
+			ArrayList<JoinCart_Bean> list= m.viewCart(user);
+			
+			ArrayList<JoinCart_Bean> listt= m.cartTotal(user);
+			int count = m.cartCount(user); 
+			request.setAttribute("count", count);
+			if(list.isEmpty()==true)
+			{
+			 response.sendRedirect("index.jsp");				
+		                 
+			}
+			     else {
+			      RequestDispatcher rd=request.getRequestDispatcher("Viewcart.jsp");
+			     request.setAttribute("LIST", list);
+			     request.setAttribute("LISTT", listt);
+			      rd.forward(request, response);
+			      }
 		}
-		ArrayList<JoinCart_Bean> list= m.viewCart(user);
+			     	 
+		else
+		{
+             ArrayList<JoinCart_Bean> list= m.viewCart(user);
+			
+			ArrayList<JoinCart_Bean> listt= m.cartTotal(user);
+			int count = m.cartCount(user); 
+			request.setAttribute("count", count);
+			if(list.isEmpty()==true)
+			{
+			 response.sendRedirect("viewgridcustomer");				
+		                 
+			}
+			     else {
+			      RequestDispatcher rd=request.getRequestDispatcher("Viewcart.jsp");
+			     request.setAttribute("LIST", list);
+			     request.setAttribute("LISTT", listt);
+			      rd.forward(request, response);}
+			      
+			     	      }
+
+		}
+	
+
+
 		
-		ArrayList<JoinCart_Bean> listt= m.cartTotal(user);
-		int count = m.cartCount(user); 
-		request.setAttribute("count", count);
+	
 
-	      RequestDispatcher rd=request.getRequestDispatcher("Viewcart.jsp");
-	     request.setAttribute("LIST", list);
-	     request.setAttribute("LISTT", listt);
-	      rd.forward(request, response);
-	      
-	     	      }
-
+		
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

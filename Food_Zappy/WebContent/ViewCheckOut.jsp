@@ -5,29 +5,47 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+        
+
+<script type="text/javascript">
+
+function check(i) 
+{
+	 var q=document.getElementById('q'+i).value;
+	  var up=document.getElementById('p'+i).value;
+	  var cid=document.getElementById('cid'+i).value;
+	 document.getElementById('total'+i).value=q*up;
+	 
+	  var xhttp = new XMLHttpRequest();
+	  //
+	 // var quantity=document.getElementById('q').value;
+	  xhttp.open("POST", "UpdateViewCart?cid="+cid+"&q="+q, true);
+	  xhttp.send();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	     document.getElementById("gtot").innerHTML = this.responseText;
+	    
+	    	   }
+	  };
+	  
+	}
+</script>
+
 </head>
 <body>
-<h1>Success</h1>
-
-<%--- 
-<%@page import="java.util.ArrayList,beans.CartBean" %>
- <% 
- ArrayList<CartBean> list=(ArrayList<CartBean>)request.getAttribute("LIST");
+ <%@page import="java.util.ArrayList,beans.JoinCart_Bean" %>
+<%
+ 	  String uid=(String)session.getAttribute("uid");
+ 	 if(uid==null) 
+ 	  {%>
+ <%@include file="Headercust1.jsp" %>
+ <%} %>
+ <% if(uid!=null) 
+ 	  {%>
+ <%@include file="HeaderCust.jsp" %>
+ <%} %>
+ <div style="padding-top: 90px;"></div>
+ ${msg}
  
- %>
- <%
-   for(CartBean ee:list)
-   {
-	  %>
-   	 <tr>
-   	<td> Pid:<%=ee.getPid()%> </td>
-   	<td> Qty:<%=ee.getQuantity()%> </td>
-	<td>User: <%=ee.getName()%> </td>
-	 
-	 </tr>
-	 <%
-	 }
-  %>
- --%>
-</body>
+ </body>
 </html>

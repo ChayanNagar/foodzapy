@@ -104,40 +104,27 @@ html {
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form action=./CustomerCheck method="post">
+					<form action=./ForgotPasswordServlet method="post">
 					${msg}
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							<input type="text" name="email" class="form-control input_user" value="" placeholder="Enter emailid">
+							<input type="text" name="email" id="eml" class="form-control input_user" value="" placeholder="Enter emailid">
 						</div>
-						<div class="input-group mb-2">
-							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-key"></i></span>
-							</div>
-							<input type="password" name="pwd" class="form-control input_pass" value="" placeholder="password">
-						</div>
-						<div class="form-group">
-							<div class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="customControlInline">
-								<label class="custom-control-label" for="customControlInline">Remember me</label>
-							</div>
-						</div>
+												
+				       
 					
 				</div>
 				<div class="d-flex justify-content-center mt-3 login_container">
-					<button type="submit" name="button" class="btn login_btn">Login</button>
+					<button type="submit" name="button" class="btn login_btn">Submit</button>
 				</div>
 				</form>
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
 						Don't have an account? <a href="Signup.jsp" class="ml-2">Sign Up</a>
 					</div>
-					<div class="d-flex justify-content-center links">
-						<a href="ForgotPassword.jsp">Forgot your password?</a>
-					</div>
-				</div>
+								</div>
 			</div>
 		</div>
 	</div>
